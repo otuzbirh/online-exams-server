@@ -75,12 +75,12 @@ module.exports.login = async (req, res) => {
     res.cookie("refreshToken", refreshToken, { httpOnly: true, maxAge: refreshTokenMaxAge * 1000 });
     res.status(201).json({ 
       status: true, 
-      data: {
+      
         id: user._id,
         username: user.username,
         email: user.email,
-        role: user.role
-      },
+        role: user.role,
+    
       token 
     });
   } catch (err) {

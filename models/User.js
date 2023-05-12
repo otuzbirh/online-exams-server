@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const AutoIncrement = require('mongoose-auto-increment');
+
 
 const userSchema = new mongoose.Schema({
+  
   email: {
     type: String,
     required: [true, "Email is Required"],
