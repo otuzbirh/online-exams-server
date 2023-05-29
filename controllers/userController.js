@@ -47,12 +47,19 @@ const createUser = asyncWrapper( async (req, res) => {
       }
       res.status(200).json({ user })
   } )
+
+  const listStudents = asyncWrapper( async (req, res, next) => {
+    const students = await User.find({role: 'student'})
+    res.status(200).json( { data: {students} })
+  })
+  
   
   module.exports = {
     createUser,
     listUsers,
     singleUser,
     deleteUser,
-    updateUser
+    updateUser,
+    listStudents
   };
   

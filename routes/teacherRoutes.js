@@ -1,6 +1,7 @@
-const { createQuiz, listQuiz, singleQuiz, deleteQuiz, updateQuiz, createQuestion, listQuestions, singleQuestion, deleteQuestion, updateQuestion } = require("../controllers/teacherController");
+const { createQuiz, listQuiz, singleQuiz, deleteQuiz, updateQuiz, createQuestion, listQuestions, deleteQuestion, updateQuestion } = require("../controllers/teacherController");
 const authMiddleware = require('../middleware/auth')
 const router = require("express").Router();
+
 
 // Quiz routes
 router.post("/create", createQuiz);
