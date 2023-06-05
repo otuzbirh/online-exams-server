@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const questionSchema = require('./Question')
 
 const quizSchema = mongoose.Schema({
     quizname: {
@@ -13,9 +14,10 @@ const quizSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    students: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+  
+    questions: [{
+        type: mongoose.Schema.Types.Array,
+        ref: 'Question' 
     }]
 });
 

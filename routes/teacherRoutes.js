@@ -1,19 +1,19 @@
 const { createQuiz, listQuiz, singleQuiz, deleteQuiz, updateQuiz, createQuestion, listQuestions, deleteQuestion, updateQuestion } = require("../controllers/teacherController");
-const authMiddleware = require('../middleware/auth')
+const authMiddleware = require("./../middleware/authMiddleware")
 const router = require("express").Router();
 
 
 // Quiz routes
-router.post("/create", createQuiz);
-router.get("/list", listQuiz)
-router.get("/:id", singleQuiz)
-router.delete("/:id", deleteQuiz)
-router.patch("/:id", updateQuiz)
+router.post("/create", authMiddleware, createQuiz);
+router.get("/list",authMiddleware, listQuiz)
+router.get("/:id", authMiddleware,singleQuiz)
+router.delete("/:id", authMiddleware,deleteQuiz)
+router.patch("/:id", authMiddleware,updateQuiz)
 
-// Question routes
-router.post("/question/create", createQuestion);
+// Question routes  
+router.post("/question/create",authMiddleware, createQuestion);
 router.get("/question/list",authMiddleware, listQuestions)
-router.delete("/question/:id", deleteQuestion)
-router.patch("/question/:id", updateQuestion)
+router.delete("/question/:id",authMiddleware, deleteQuestion)
+router.patch("/question/:id", authMiddleware, updateQuestion)
 
 module.exports = router;

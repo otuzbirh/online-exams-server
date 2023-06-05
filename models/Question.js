@@ -1,9 +1,5 @@
 var mongoose = require('mongoose')
 var questionSchema = mongoose.Schema({
-    quizid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Quiz'
-    },
   
     questionText:{
         type: String, 
@@ -14,7 +10,7 @@ var questionSchema = mongoose.Schema({
         required: true
     },
     options:{
-        type  :Array,
+        type: Array,
         default:[]
     }
 })
