@@ -6,6 +6,8 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
+const studentRoutes = require("./routes/studentRoutes");
+
 
 const cookieParser = require("cookie-parser");
 const connectDB = require("./db/connect")
@@ -24,6 +26,7 @@ app.use(cors());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/quiz", teacherRoutes);
+app.use("/api/v1/score", studentRoutes);
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
@@ -41,13 +44,7 @@ const start = async () => {
 
 start();
 
-// app.use(
-//   cors({
-//     origin: ["http://localhost:3000"],
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//   })
-// );
+
 app.use(cookieParser());
 
 
