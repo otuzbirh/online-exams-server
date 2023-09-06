@@ -2,10 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "server application for online testing students application",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "babel src -d dist"
+
   },
   "author": "Hadzo Otuzbir",
   "license": "ISC",
@@ -22,8 +24,12 @@
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.2.4",
-    "mongoose-auto-increment": "^5.0.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.5",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5"
   }
 }

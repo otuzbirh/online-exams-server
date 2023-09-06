@@ -18,15 +18,6 @@ const createScore = asyncWrapper(async (req, res) => {
     res.status(200).json(scores);
   });
 
-  const deleteScore = asyncWrapper(async (req, res, next) => {
-    const {id: scoreID} = req.params
-    const score = await Score.findByIdAndDelete({_id: scoreID})
-    if (!score) {
-      return next(createCustomError(`No score with id : ${score}`, 404))
-    }
-    res.status(200).json({ score })
-  })
-
   const studentList = asyncWrapper(async (req, res, next) => {
     const { id } = req.params;
   
@@ -42,7 +33,6 @@ const createScore = asyncWrapper(async (req, res) => {
   module.exports = {
     createScore,
     listScores,
-    studentList,
-    deleteScore
+    studentList
   };
   

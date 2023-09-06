@@ -1,5 +1,4 @@
-
-const { createScore, listScores, deleteScore, studentList} = require("../controllers/studentController");
+const { createScore, listScores, studentList} = require("../controllers/studentController");
 const authMiddleware = require("./../middleware/authMiddleware")
 const router = require("express").Router();
 
@@ -8,7 +7,6 @@ const router = require("express").Router();
 router.post("/create", authMiddleware, createScore);
 router.get("/list", authMiddleware, listScores)
 router.get("/list/:id", authMiddleware, studentList)
-router.get("/delete/:id", authMiddleware, deleteScore)
 
 
 
