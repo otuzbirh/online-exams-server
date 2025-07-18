@@ -57,9 +57,7 @@ const login = async (req, res) => {
       throw new Error("incorrect email");
     }
 
-    const auth = await bcrypt.compare(password, user.password);
-
-    if (!auth) {
+    if (password !== user.password) {
       throw new Error("incorrect password");
     }
 
@@ -78,7 +76,7 @@ const login = async (req, res) => {
     });
   } catch (err) {
     const errors = handleErrors(err);
-    res.status(401).json({ errors, status: false, msg: 'Imas neku gresku' });
+    res.status(401).json({ errors, status: false, msg: 'Invalid credentials' });
   }
 };
 
