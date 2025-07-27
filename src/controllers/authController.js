@@ -31,7 +31,7 @@ const handleErrors = (err) => {
   }
 
   if (err.message === "incorrect password") {
-    errors.password = "That password is incorrect";
+    errors.password = "That password is incorrect hadzo test";
   }
 
   if (err.code === 11000) {
