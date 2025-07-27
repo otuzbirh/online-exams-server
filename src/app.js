@@ -63,7 +63,10 @@ const start = async () => {
   }
 };
 
-start();
+// Only start the server if this file is being run directly (not during build)
+if (require.main === module) {
+  start();
+}
 
 
 

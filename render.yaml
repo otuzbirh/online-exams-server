@@ -2,7 +2,7 @@ services:
   - type: web
     name: online-exam-server
     env: node
-    buildCommand: npm run build
+    buildCommand: npm install && npm run build
     startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
