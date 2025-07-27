@@ -2,7 +2,7 @@ services:
   - type: web
     name: online-exam-server
     env: node
-    buildCommand: chmod +x build.sh && ./build.sh
+    buildCommand: npm install && npx babel src -d dist && node verify.js
     startCommand: node dist/app.js
     envVars:
       - key: NODE_ENV

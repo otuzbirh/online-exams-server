@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/app.js",
     "start:prod": "node ./dist/app.js",
-    "build": "npx babel src -d dist"
+    "build": "npx babel src -d dist",
+    "postinstall": "echo 'Postinstall: Current directory:' && pwd && echo 'Files in current directory:' && ls -la"
   },
   "author": "Hadzo Otuzbir",
   "license": "ISC",
