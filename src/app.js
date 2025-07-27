@@ -23,6 +23,14 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    env: process.env.NODE_ENV || 'development'
+  });
+});
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
@@ -37,12 +45,21 @@ app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 3000;
 const start = async () => {
   try {
+    // Check if MONGO_URL is provided
+    if (!process.env.MONGO_URL) {
+      console.error('MONGO_URL environment variable is not set');
+      process.exit(1);
+    }
+
     await connectDB(process.env.MONGO_URL);
+    console.log('Connected to database successfully');
+
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
   } catch (error) {
-    console.log(error);
+    console.error('Failed to start server:', error);
+    process.exit(1);
   }
 };
 
