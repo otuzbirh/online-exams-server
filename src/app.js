@@ -6,6 +6,7 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const studentRoutes = require("./routes/studentRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 
 
@@ -35,10 +36,6 @@ const corsOptions = {
       'http://localhost:4173',
       'http://localhost:8080',
       'https://online-testing-students-client.vercel.app'
-      // Add your production frontend domain here
-      // 'https://your-frontend-domain.onrender.com',
-      // 'https://your-frontend-domain.vercel.app',
-      // 'https://your-frontend-domain.netlify.app'
     ];
 
     // In development, allow all origins
@@ -85,6 +82,7 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/quiz", teacherRoutes);
 app.use("/api/v1/score", studentRoutes);
 app.use("/api/v1/ai", aiRoutes);
+app.use("/api/v1/dashboard", dashboardRoutes);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
