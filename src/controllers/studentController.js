@@ -27,12 +27,23 @@ const createScore = asyncWrapper(async (req, res) => {
     
     res.status(200).json(scores);
   });
-  
 
+  const deleteScore = asyncWrapper(async (req, res, next) => {
+    const { id } = req.params;
+    
+    const score = await Score.findByIdAndDelete(id);
+    
+    if (!score) {
+      return next(createCustomError(`No score with id: ${id}`, 404));
+    }
+    
+    res.status(200).json({ msg: 'Score deleted successfully' });
+  });
 
   module.exports = {
     createScore,
     listScores,
-    studentList
+    studentList,
+    deleteScore
   };
   
